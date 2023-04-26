@@ -4,6 +4,10 @@ My goal is to create a model that will be able to predict images properly.
 
 
 
+## :dart: Update V. 1.1
+- Using Visions Food 101 dataset
+- Currently setting up data, plan on comparing Sushi, Steak and Pizza
+
 ## :dart: Update V. 1.0
 - Created initial documents
 - Based learning off https://www.youtube.com/watch?v=k1GIEkzQ8qc&t=431s
