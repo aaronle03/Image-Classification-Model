@@ -1,43 +1,109 @@
+Skip to content
+Search or jump to…
+Pulls
+Issues
+Codespaces
+Marketplace
+Explore
+ 
+@aaronle03 
+Sebastian-Schuchmann
+/
+ChurrosSamosaClassifier
+Public
+Fork your own copy of Sebastian-Schuchmann/ChurrosSamosaClassifier
+Code
+Issues
+Pull requests
+1
+Discussions
+Actions
+Projects
+Security
+Insights
+Beta Try the new code view
+ChurrosSamosaClassifier/server/templates/index.html
+@Sebastian-Schuchmann
+Sebastian-Schuchmann Added loading animation
+Latest commit 65fc362 on Dec 3, 2020
+ History
+ 1 contributor
+76 lines (59 sloc)  2.39 KB
+ 
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Sushi, Steak or Pizza!</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <link rel="stylesheet" href="../static/style.css">
+
+    <title>Churros or Samosa?</title>
 </head>
+
 <body>
-    <div class="title">
-        <h1>Image Classification Program</h1>
-        <h3>Please enter a photo of either a 🥩, 🍣 or 🍕!</h3>
-        <div class="file-upload-container">
-            <form>
-                <label id="file-upload-title" for="file-upload"></label>
-                <input type="file" id="file-upload" name="file-upload">
-                <button type="button" onclick="showImage()">Submit</button>
+
+    <div class="container">
+        <div class="row">
+            <h1>Churros or Samosa?</h1>
+        </div>
+        <div class="row">
+            <p>This is a very simple classifer between Churros and Samosas. </p>
+        </div>
+        <div class="row">
+            <p>Built with PyTorch/FastAI. Just upload an image from your computer and
+                it will be classified.
+            </p>
+
+        </div>
+        <div class="row">
+            <h2>Uploader</h2>
+        </div>
+        <div class="row">
+            <img id="uploadedImg">
+        </div>
+
+        <div class="row">
+            <form enctype="multipart/form-data" method="POST" name="fileinfo">
+                <label>Upload your image:</label>
+                <input type="file" name="file" required />
+                <input type="submit" value="Classify!" />
             </form>
-            <div id="image-container"></div>
+    
+        </div>
+        <div class="row">
+   
+            <h2>Results</h2>
+            <div id="loader" class="lds-dual-ring"></div>
+        </div>
+        <div id="results" class="grid-container">
         </div>
     </div>
-    <script>
-        function showImage() {
-            const input = document.getElementById('file-upload');
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    const imageContainer = document.getElementById('image-container');
-                    // remove existing image if it exists
-                    if (imageContainer.firstChild) {
-                        imageContainer.removeChild(imageContainer.firstChild);
-                    }
-                imageContainer.appendChild(img);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-    </script>
+
+
+
+<img id="churros" src="../static/churros.png">
+
+    <footer>
+        <p>
+            <a class="github-button" href="https://github.com/sebastian-schuchmann" data-show-count="true"
+                aria-label="Follow @sebastian-schuchmann on GitHub">Follow @sebastian-schuchmann</a>
+
+            <a class="github-button" href="https://github.com/Sebastian-Schuchmann/ChurrosSamosaClassifier"
+                data-show-count="true" data-icon="octicon-star"
+                aria-label="Star Sebastian-Schuchmann/ChurrosSamosaClassifier on GitHub">Star</a>
+        </p>
+
+    </footer>
+
+    <script src="../static/main.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
+
 </html>
